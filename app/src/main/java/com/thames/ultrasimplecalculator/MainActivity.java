@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     public int language = 0;
 
     AdView mAdView;
-    private Object view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,9 +108,11 @@ public class MainActivity extends AppCompatActivity {
                 getString(R.string.display2).equals(enterValue.getText().toString()))
         {
             enterValue.setText(stringToAdd);
+            enterValue.addTextChangedListener(new NumberTextWatcherForThousand(enterValue));
             enterValue.setSelection(cursorPosition + 1);
         } else {
             enterValue.setText(String.format("%s%s%s",leftString,stringToAdd,rightString));
+            enterValue.addTextChangedListener(new NumberTextWatcherForThousand(enterValue));
             enterValue.setSelection(cursorPosition + 1);
         }
     }

@@ -403,7 +403,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         app:adSize="BANNER"
-        app:adUnitId="ca-app-pub-5583468070567511/7547880001"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
         android:layout_gravity="bottom"
         app:layout_constraintBottom_toBottomOf="parent">
     </com.google.android.gms.ads.AdView>
