@@ -1,29 +1,25 @@
 package com.thames.ultrasimplecalculator;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import org.mariuszgromada.math.mxparser.Expression;
 
-import org.mariuszgromada.math.mxparser.*;
+import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -97,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
     private void updateText (String stringToAdd){
         String oldString = enterValue.getText().toString();
         int cursorPosition = enterValue.getSelectionStart();
@@ -108,11 +103,9 @@ public class MainActivity extends AppCompatActivity {
                 getString(R.string.display2).equals(enterValue.getText().toString()))
         {
             enterValue.setText(stringToAdd);
-            enterValue.addTextChangedListener(new NumberTextWatcherForThousand(enterValue));
             enterValue.setSelection(cursorPosition + 1);
         } else {
             enterValue.setText(String.format("%s%s%s",leftString,stringToAdd,rightString));
-            enterValue.addTextChangedListener(new NumberTextWatcherForThousand(enterValue));
             enterValue.setSelection(cursorPosition + 1);
         }
     }
